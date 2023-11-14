@@ -57,23 +57,23 @@ Exercícios 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3, 5.1, 5.3 da página do Prof.
 
 # Exercícios Práticos
 
-**1.** Baixe a implementação criada em sala de aula no [github](
+**1.** Baixe a implementação criada em sala de aula no [link](https://github.com/julianofoleiss/BCC4001-guias/tree/4178e3ceb8cb4c6add8cc29df2ffd58dac8adeec/08.%20arvores%20e%20arvores%20de%20busca%20bin%C3%A1ria/abb). Implemente as funções a seguir na classe ABB:
 
-**a.** Implemente as funções *ABB_Criar*, *ABB_Buscar* e *ABB_Inserir* conforme mostrado no [vídeo](https://youtu.be/dzTCB5HthBQ).
+**a.** Implemente os destrutures das classes `NoABB` e `ABB`. **ATENÇÃO**: você deve alterar o método `ABB::removerNo` para que ele anule `no->dir` ou `no->esq` (no caso 2, de acordo com a situação) antes de desalocar o nó. Caso contrário, você terá problemas ao destruir a árvore (por quê?). 
 
-**b.** Implemente a função *ABB_Imprimir* de forma que produza a saída mostrada no [vídeo](https://youtu.be/dzTCB5HthBQ?t=1960).
+**b.** Implemente a função `imprimir()` de forma que produza a saída mostrada no [vídeo](https://youtu.be/dzTCB5HthBQ?t=1960).
 
-**c.** Escreva uma função recursiva *ABB_Tamanho* que devolva o número de nós de uma árvore binária.
+**c.** Implemente a função recursiva `tamanho()` que devolve o número de nós de uma árvore binária. Você pode criar um método privado auxiliar, conforme fizemos para implementar a inserção e a remoção.
 
-**d.** Escreva uma função recursiva *ABB_Altura* que calcule a altura de uma árvore binária. Sua implementação deve ser preguiçosa (*lazy*), ou seja, não é necessário calcular as profundidades antes.
+**d.** Implemente a função recursiva `altura()` que calcula a altura da árvore. Sua implementação deve ser preguiçosa (*lazy*), ou seja, você deve percorrer a árvore toda para calcular a altura. 
 
-**e.** Acrescente um campo *profundidade* a estrutura ABB para armazenar a profundidade do nó. Escreva uma função *ABB_CalcularProfundidades* que atribua as profundidades de todos os nós.
+**e.** Acrescente um campo `profundidade` na classe `NoABB` para armazenar a profundidade do nó. Adicione o método privado `calcularProfundidades()` na classe `ABB`. Implemente este método, que deve atribuir as profundidades de todos os nós.
 
-**f.** O comprimento interno de uma árvore binária é a soma das profundidades dos seus nós, ou seja, a soma de todos os caminhos que levam da raíz até um nó. Escreva um método *ABB_ComprimentoInterno* que retorne o comprimento interno de uma árvore binária.
+**f.** O comprimento interno de uma árvore binária é a soma das profundidades dos seus nós. Adicione o método público `comprimentoInterno()` na classe ABB que retorne o comprimento interno da árvore. **DICA**: use o método `calcularProfundidades()` para calcular as profundidades dos nós.
 
-**g.** Escreva uma função *ABB_ABB* que receba uma árvore binária e verifique se ela é ou não uma árvore de busca binária. Retorne 1 caso seja uma ABB, ou 0, caso contrário.
+**g.** Adicione o método público `bool valida()` na classe `ABB` que verifica se a árvore é válida. Lembre-se que a definição da ABB diz que, para todo nó `i` da árvore, todos as chaves nós da subárvore esquerda de `i` devem ser menores que `i.chave` e todas as chaves dos nós da subárvore direita de `i` devem ser maiores que `i.chave`. **DICA:** não basta verificar se a propriedade da `ABB` é satisfeita para todos os nós da árvore. **DICA 2:** Você pode criar um método privado auxiliar, conforme fizemos para implementar a inserção e a remoção.
 
-**h.** Método Tamanho ansioso. No exercício **c** você provavelmente implementou a função *ABB_Tamanho* de forma preguiçosa, que examina toda a árvore e assim consome tempo proporcional ao número de nós na árvore. Escreva uma implementação mais eficiente usando a seguinte idéia (conhecida como implementação ansiosa, *eager*): acrescente a estrutura ABB um campo N, que guarde o número de nós na subárvore enraizada naquele nó. Dessa forma, para saber o tamanho da árvore, basta retornar N da raíz, que tem complexidade constante. N é atualizado durante as operações que alteram a estrutura da árvore, como a inserção. Altere também o método ABB_Inserir para atualizar o campo N conforme necessário, apenas dos nós no caminho da inserção. Você pode alterar a assinatura da função, se necessário.
+<!-- **h.** Método Tamanho ansioso. No exercício **c** você provavelmente implementou a função *ABB_Tamanho* de forma preguiçosa, que examina toda a árvore e assim consome tempo proporcional ao número de nós na árvore. Escreva uma implementação mais eficiente usando a seguinte idéia (conhecida como implementação ansiosa, *eager*): acrescente a estrutura ABB um campo N, que guarde o número de nós na subárvore enraizada naquele nó. Dessa forma, para saber o tamanho da árvore, basta retornar N da raíz, que tem complexidade constante. N é atualizado durante as operações que alteram a estrutura da árvore, como a inserção. Altere também o método ABB_Inserir para atualizar o campo N conforme necessário, apenas dos nós no caminho da inserção. Você pode alterar a assinatura da função, se necessário.
 
 **i.** Seguindo o raciocínio do exercício **h**, acrescente um campo inteiro *h* na estrutura ABB, e escreva uma versão ansiosa da função que retorne a altura da árvore binária (*ABB_Altura*). Altere as funções necessárias.
 
@@ -103,7 +103,9 @@ ENTRADA: vetor V com N inteiros
 
 **b.** Qual é o custo do algoritmo acima no pior caso? Não é necessário fazer uma prova formal, apenas discutir qual seria esse custo.
 
-**c.** No [vídeo](https://youtu.be/dzTCB5HthBQ?t=2301) eu discuto que se as chaves forem uniformemente distribuídas, o custo de uma busca ou inserção é aproximadamente $1.4 \lg n$ se n for grande. Como você pode aproveitar essa idéia para fugir do custo no pior caso discutido na resposta do exercício anterior? Implemente a modificação e compare o resultado das duas implementações no pior caso.
+**c.** No [vídeo](https://youtu.be/dzTCB5HthBQ?t=2301) eu discuto que se as chaves forem uniformemente distribuídas, o custo de uma busca ou inserção é aproximadamente $1.4 \lg n$ se n for grande. Como você pode aproveitar essa idéia para fugir do custo no pior caso discutido na resposta do exercício anterior? Implemente a modificação e compare o resultado das duas implementações no pior caso. -->
+
+
 
 <!-- # Atividade para Entregar
 
