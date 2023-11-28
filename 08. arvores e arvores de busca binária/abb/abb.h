@@ -95,8 +95,13 @@ public:
     //retorna o endereço do nó com a chave antecessora à chave do nó especificado
     NoABB<C, V>* antecessor(NoABB<C, V>* no);
 
-    // retorna o número de nós da árvore (recursivamente)
+    // retorna o número de nós da árvore
     int tamanho();
+
+    // retorna a altura da árvore
+    int altura();
+
+    
 
     // retorna true se a árvore estiver vazia
     bool vazia();
