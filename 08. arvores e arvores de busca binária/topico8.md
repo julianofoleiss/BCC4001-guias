@@ -73,21 +73,13 @@ Exercícios 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3, 5.1, 5.3 da página do Prof.
 
 **g.** Adicione o método público `bool valida()` na classe `ABB` que verifica se a árvore é válida. Lembre-se que a definição da ABB diz que, para todo nó `i` da árvore, todos as chaves nós da subárvore esquerda de `i` devem ser menores que `i.chave` e todas as chaves dos nós da subárvore direita de `i` devem ser maiores que `i.chave`. **DICA:** não basta verificar se a propriedade da `ABB` é satisfeita para todos os nós da árvore. **DICA 2:** Você pode criar um método privado auxiliar, conforme fizemos para implementar a inserção e a remoção.
 
-<!-- **h.** Método Tamanho ansioso. No exercício **c** você provavelmente implementou a função *ABB_Tamanho* de forma preguiçosa, que examina toda a árvore e assim consome tempo proporcional ao número de nós na árvore. Escreva uma implementação mais eficiente usando a seguinte idéia (conhecida como implementação ansiosa, *eager*): acrescente a estrutura ABB um campo N, que guarde o número de nós na subárvore enraizada naquele nó. Dessa forma, para saber o tamanho da árvore, basta retornar N da raíz, que tem complexidade constante. N é atualizado durante as operações que alteram a estrutura da árvore, como a inserção. Altere também o método ABB_Inserir para atualizar o campo N conforme necessário, apenas dos nós no caminho da inserção. Você pode alterar a assinatura da função, se necessário.
+**h.** Método Tamanho ansioso. No exercício **c** você provavelmente implementou a função `tamanho()` de forma preguiçosa, que percorre toda a árvore e assim consome tempo proporcional ao número de nós na árvore. Escreva uma implementação mais eficiente usando a seguinte idéia (conhecida como implementação ansiosa, *eager*): acrescente na classe `NoABB` um campo `N`, que guarda o número de nós na subárvore enraizada naquele nó. Dessa forma, para saber o tamanho da árvore, basta retornar `N` da raíz, sem a necessidade de percorrer a árvore. `N` é atualizado durante as operações que alteram a estrutura da árvore, como a inserção e a remoção. Altere também os métodos `inserirNo` e `removerNo` para atualizar o campo `N` conforme necessário, apenas dos nós cuja altura seja afetada. Você pode alterar a assinatura das funções, `inserirNo` e `removerNo`, caso necessário.
 
-**i.** Seguindo o raciocínio do exercício **h**, acrescente um campo inteiro *h* na estrutura ABB, e escreva uma versão ansiosa da função que retorne a altura da árvore binária (*ABB_Altura*). Altere as funções necessárias.
+**i.** Seguindo o raciocínio do exercício **h**, acrescente um campo inteiro `h` na classe `NoABB`, e escreva uma versão ansiosa da função que retorne a altura da árvore binária (`altura()`). Altere as funções necessárias.
 
-**j.** Seguindo o raciocínio do exercício **h**, acrescente um campo inteiro *ci* na estrutura ABB, e escreva uma versão ansiosa da função *ABB_ComprimentoInterno* que retorne o comprimento interno de uma árvore binária.
+**j.** Implemente versões iterativas dos métodos `inserir` e `buscar`.
 
-**k.** Implemente a função *ABB_CustoMedioBemSucedida*, que compute o custo médio de uma busca bem-sucedida, supondo que cada chave tem a mesma probabilidade de ser buscada. Considere que o custo de uma busca é o número de comparações de chaves.
-
-**l.** Implemente a função *ABB_CustoMedioMalSucedida*, que compute o custo médio de uma busca malsucedida, supondo que cada chave tem a mesma probabilidade de ser buscada. Considere que o custo de uma busca é o número de comparações de chaves.
-
-**m.** Implemente versões iterativas das funções *ABB_Buscar* e *ABB_Inserir*.
-
-**n.** Implemente versões iterativas das funções *ABB_Tamanho*, *ABB_ABB*. **DICA:** use alguma estrutura de dados auxiliar para armazenar os nós a serem processados.
-
-**o.** Implemente uma função *void ABB_Destruir(ABB\*\* A)*, que desaloca todos os recursos usados pela árvore A.
+**k.** Implemente uma versão iterativa do método `tamanho`. **DICA:** Use alguma estrutura de dados auxiliar para armazenar os nós a serem processados. Use a implementação disponível na `STL`.
 
 **2.** Um percurso em-ordem de uma árvore de busca binária visita os nós da árvore em ordem crescente. Isto pode ser explorado para implementar um algoritmo de ordenação, conforme segue:
 
@@ -99,12 +91,11 @@ ENTRADA: vetor V com N inteiros
 4. Destrua a arvore A
 ~~~
 
-**a.** Implemente a função *void ABBSort(int\* v, int n)* conforme o pseudocódigo acima.
+**a.** Implemente a função `void ABBSort(int\* v, int n)` conforme o pseudocódigo acima. Note que esta função é "solta", ou seja, não pertence a nenhuma classe.
 
-**b.** Qual é o custo do algoritmo acima no pior caso? Não é necessário fazer uma prova formal, apenas discutir qual seria esse custo.
+**b.** Qual é o custo do algoritmo acima no ***pior caso***? Não é necessário fazer uma prova formal, apenas discutir qual seria esse custo.
 
-**c.** No [vídeo](https://youtu.be/dzTCB5HthBQ?t=2301) eu discuto que se as chaves forem uniformemente distribuídas, o custo de uma busca ou inserção é aproximadamente $1.4 \lg n$ se n for grande. Como você pode aproveitar essa idéia para fugir do custo no pior caso discutido na resposta do exercício anterior? Implemente a modificação e compare o resultado das duas implementações no pior caso. -->
-
+**c.** No [vídeo](https://youtu.be/dzTCB5HthBQ?t=2301) eu discuto que se as chaves forem uniformemente distribuídas, o custo de uma busca ou inserção é aproximadamente $1.4 \lg n$ se n for grande. Como você pode aproveitar essa idéia para fugir do custo no pior caso discutido na resposta do exercício anterior? Implemente a modificação e compare o resultado das duas implementações no pior caso.
 
 
 <!-- # Atividade para Entregar
