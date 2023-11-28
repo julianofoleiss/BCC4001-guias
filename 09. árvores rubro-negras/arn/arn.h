@@ -144,6 +144,15 @@ class ARN {
         NoARN<tC, tV>* antecessor(tC chave);
         //retorna o endereço do nó com a chave antecessora da chave especificada
         NoARN<tC, tV>* antecessor(NoARN<tC, tV>* no);
+
+        //retorna o custo esperado de uma busca bem sucedida
+        int custoBuscaBemSucedida();
+
+        //retorna o custo esperado de uma busca mal sucedida
+        int custoBuscaMalsucedida();
+
+        //retorna a percentagem de nós vermelhos na árvore
+        float percentualNosVermelhos();
         
 private:    
     // armazena o endereço da raiz da árvore
