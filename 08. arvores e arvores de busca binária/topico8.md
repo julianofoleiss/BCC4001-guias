@@ -91,7 +91,7 @@ ENTRADA: vetor V com N inteiros
 4. Destrua a arvore A
 ~~~
 
-**a.** Implemente a função `void ABBSort(int\* v, int n)` conforme o pseudocódigo acima. Note que esta função é "solta", ou seja, não pertence a nenhuma classe.
+**a.** Implemente a função `void ABBSort(int* v, int n)` conforme o pseudocódigo acima. Note que esta função é "solta", ou seja, não pertence a nenhuma classe.
 
 **b.** Qual é o custo do algoritmo acima no ***pior caso***? Não é necessário fazer uma prova formal, apenas discutir qual seria esse custo.
 
